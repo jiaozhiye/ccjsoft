@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">系统配置 <i class="crumbs-arrow">></i> 系统信息</h4>
+        <div class="alert alert-success" role="alert">服务器的基本信息，如需修改，请联系服务商！</div>
+        <table class="table table-bordered table-hover sysinfo-table">
+            <tr ng-repeat="item in dataList">
+                <td>{{ item.key }}</td>
+                <td>{{ item.value }}</td>
+            </tr>
+        </table>
+        <!-- 内容 END -->
+    </div>
+</div>

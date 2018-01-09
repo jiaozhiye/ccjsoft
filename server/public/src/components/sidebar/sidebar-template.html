@@ -1,0 +1,12 @@
+<div class="col-sm-3 col-md-2 col-xs-5 sidebar">
+    <ul class="nav nav-sidebar">
+        <li ng-repeat="item in dataList">
+            <h5 ng-class="{active : item.isActive}"><a href="javascript:;" ng-bind="item.name"></a></h5>
+            <dl ng-style="item.isActive ? {display:'block'} : ''">
+                <dd ng-repeat="val in item.list">
+                    <a ng-href="{{ val.link }}"><span class="glyphicon glyphicon-play"></span>{{ val.name }}</a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+</div>

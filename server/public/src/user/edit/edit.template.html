@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">用户管理 <i class="crumbs-arrow">></i> 编辑用户</h4>
+        <div class="alert alert-success" role="alert">系统管理员用户不能删除，否则将不能登录系统！</div>
+
+        <div class="col-md-12 col-sm-12 app-group-box">
+            <form class="form-inline">
+                <div class="form-group">
+                    <p class="form-control-static">用户组</p>
+                </div>
+                <div class="form-group">
+                    <!-- 自定义用户组指令 -->
+                    <app-usergroup ng-model="groupid" ng-change="filterFn2(groupid)"></app-usergroup>
+                    <!-- 自定义用户组指令 END -->
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">&nbsp;&nbsp;搜索</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchVal" placeholder="请输入关键字...">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="filterFn(searchVal)">搜 索</button>
+            </form>
+        </div>
+        <table class="table table-hover app-edit-table">
+            <tr class="active">
+                <th>
+                    用户名
+                </th>
+                <th>
+                    所在组别
+                </th>
+                <th>
+                    最后登录时间
+                </th>
+                <th>
+                    是否可用
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <!-- limitTo 显示几条 从第几条开始 -->
+            <tr ng-repeat="item in userList | filter : {gid : changeVal} | filter : searchVal | limitTo : pageNum : curIndex">
+                <td>
+                    {{ item.username }}
+                </td>
+                <td>
+                    {{ item.groupname }}
+                </td>
+                <td>
+                    {{ item.last_login | dateFormate}}
+                </td>
+                <td>
+                    {{ item.disable ? '是' : '否' }}
+                </td>
+                <td>
+                    <a ng-href="#!/moduser/{{item.id}}">修改</a>　<a href="javascript:;" ng-click="delUser(item.id)">删除</a>
+                </td>
+            </tr>
+        </table>
+        <!-- 自定义分页指令 -->
+        <page-index my-init="pageInit(cb)" my-getdata="getList(cur)"></page-index>
+        <!-- 自定义分页指令 END -->
+        <!-- 内容 END -->
+    </div>
+</div>

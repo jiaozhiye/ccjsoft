@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">用户组管理 <i class="crumbs-arrow">></i> 修改用户组</h4>
+        <div class="alert alert-success" role="alert">请慎重修改用户组权限！</div>
+        <form class="form-horizontal container-fluid col-md-9" name="myForm">
+            <div class="row content-alert" ng-hide="regGroup.regVal == 'pass'">
+                <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regGroup.regList | filter : regGroup.regVal">{{ item.tips }}</div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户组名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="regGroup" ng-model="groupInfo.name" placeholder="用户组名" ng-blur="change('regGroup', myForm.regGroup.$error)" required ng-pattern="/^[^'%<>@]+$/">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户组描述</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" ng-model="groupInfo.description" placeholder="用户组描述..."></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户组权限</label>
+                <div class="col-sm-10">
+                    <label class="checkbox-inline" ng-repeat="item in navList">
+                        <input type="checkbox" ng-model="item.access"> {{ item.name }}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">是否禁用</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="groupInfo.disable">
+                            选中为禁用状态
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-click="modInfo()">修改用户组</button>
+                </div>
+            </div>
+        </form>
+        <!-- 内容 END -->
+    </div>
+</div>

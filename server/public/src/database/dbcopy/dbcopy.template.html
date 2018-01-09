@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">数据库管理 <i class="crumbs-arrow">></i> 数据库备份</h4>
+        <div class="alert alert-success" role="alert">经常备份数据库文件，防止数据损坏或丢失！</div>
+        <table class="table table-bordered table-hover">
+            <tr class="active">
+                <th>
+                    选中
+                </th>
+                <th>
+                    表名
+                </th>
+                <th>
+                    数据条数
+                </th>
+                <th>
+                    数据大小
+                </th>
+                <th>
+                    创建时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <tr ng-repeat="item in dataList">
+                <td>
+                    <input type="checkbox" ng-model="item.isCk">
+                </td>
+                <td>
+                    {{ item.tName }}
+                </td>
+                <td>
+                    {{ item.tRows }}
+                </td>
+                <td>
+                    {{ item.tDataLength }}
+                </td>
+                <td>
+                    {{ item.tCreateTime | date : 'yyyy-MM-dd HH:mm:ss' }}
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="optimizeFn(item.tName)">优化表</a>　<a href="javascript:;" ng-click="repairFn(item.tName)">修复表</a>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <!-- 自定义选择组建 -->
+                    <app-select app-data="dataList"></app-select>
+                    <!-- 自定义选择组建 END -->
+                </div>
+                <div class="pull-right btn-group">
+                    <button type="button" class="btn btn-default" ng-click="copyFn()">备份表</button>
+                    <button type="button" class="btn btn-default" ng-click="optimizeFn()">优化表</button>
+                    <button type="button" class="btn btn-default" ng-click="repairFn()">修复表</button>
+                </div>
+            </div>
+        </div>
+        <!-- 内容 END -->
+    </div>
+</div>

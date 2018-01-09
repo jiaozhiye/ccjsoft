@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">建站管理 <i class="crumbs-arrow">></i> 编辑导航</h4>
+        <div class="alert alert-success" role="alert">只能删除空的导航分类，如果分类下有子分类，请先删除！</div>
+        <table class="table table-bordered table-hover">
+            <tr class="active">
+                <th class="col-md-5">
+                    导航树结构
+                </th>
+                <th class="col-md-2 col-sm-2 col-xs-2">
+                    mark值
+                </th>
+                <th class="col-md-1 col-sm-2 col-xs-2">
+                    排序
+                </th>
+                <th class="col-md-2 col-sm-2 col-xs-2">
+                    是否可用
+                </th>
+                <th class="col-md-2 col-sm-2 col-xs-2">
+                    操作
+                </th>
+            </tr>
+            <tr ng-repeat="item in navList">
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>
+                    {{ item.mark }}
+                </td>
+                <td>
+                    <input type="tel" class="form-control app-claasify-inp" ng-class="{'app-none': item.pid != 0}" ng-model="item.order_list" ng-blur="modOrder(item.id)" ng-keydown="onlynum($event)" ng-pattern="/^\d+$/">
+                </td>
+                <td>
+                    {{ item.disable ? '是' : '否' }}
+                </td>
+                <td>
+                    <a ng-href="#!/modnav/{{item.id}}">修改</a> <a href="javascript:;" ng-click="delNav(item.id)">删除</a>
+                </td>
+            </tr>
+        </table>
+        <!-- 内容 END -->
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="app-upload">
+    <button type="button" class="btn btn-primary">选择文件...</button>　[文件格式: <i class="file-format" ng-bind="fileFormat"></i>]　<span ng-if="picSize">[图片尺寸: <i class="file-size" ng-bind="picSize"></i>]</span>
+    <div class="row help-block" ng-repeat="item in fileList" id="{{ item.id }}">
+        <div class="col-md-12 col-xs-12">
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <span>{{ item.name }} ({{ item.size }})</span>
+            <div class="progress app-progress">
+                <div class="progress-bar" ng-style="{'width': item.percent}"></div>
+            </div>
+            <span>{{ item.bytesPerSec }}</span>
+            <a href="javascript:;" ng-click="removeFile(item.id)">删除</a>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <a href="javascript:;" class="thumbnail" ng-click="showFullPic($parent.resps[$index].filePath)">
+                <img ng-src="{{ $parent.resps[$index].filePath }}">
+            </a>
+        </div>
+    </div>
+</div>

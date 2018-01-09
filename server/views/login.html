@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>App后台管理系统-登录页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            padding-top: 50px;
+        }
+        .header-logo {
+            display: inline-block;
+        }
+        .form-signin {
+            max-width: 310px;
+            margin: 0 auto;
+        }
+        .form-signin .form-toper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-signin .alert-danger {
+            background-color: #fcdede;
+            margin-bottom: 10px;
+        }
+        .form-signin .form-wrapper {
+            padding: 20px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #d8dee2;
+            border-radius: 5px;
+        }
+        .form-signin .form-title {
+            margin-bottom: 7px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        .my-hide {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div class="container">
+        <div class="header">
+            <a class="header-logo" href="/index.html">
+				<img src="/src/common/img/logo.png" width="260">
+			</a>
+        </div>
+        <form class="form-signin" name="myForm" ng-controller="loginCtrl">
+            <h3 class="form-toper" ng-bind="title"></h3>
+            <div class="alert alert-danger fade my-hide">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <span></span>
+            </div>
+            <div class="form-wrapper">
+                <div class="form-group">
+                    <label class="form-title">请输入用户名</label>
+                    <input type="text" name="username" ng-model="username" class="form-control" placeholder="用户名" ng-blur="change('用户名不能为空', myForm.username.$error)" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="form-title">请输入密码</label>
+                    <input type="password" name="password" ng-model="password" class="form-control" placeholder="密码" ng-blur="change('密码名不能为空', myForm.password.$error)" ng-keypress="enter_login($event)" required>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="click_login()">登 录</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        (function(angular){
+            'use strict';
+
+            // 实例化模块
+            angular.module('myApp', []).
+            // 初始化根作用域
+            run(['$rootScope', function($rootScope){
+                $rootScope.title = '欢迎使用';
+            }]).
+            // 注册控制器
+            controller('loginCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+                $scope.$$alert = $('.alert');
+
+                // 开启警告框
+                var warnBoxShow = function(str){
+                    $scope.$$alert.removeClass('my-hide').children('span').html(str);
+                    setTimeout(function(){
+                        $scope.$$alert.addClass('in');
+                    }, 20);
+                };
+
+                // 关闭警告框
+                var warnBoxHide = function(){
+                    $scope.$$alert.removeClass('in').addClass('my-hide');
+                };
+
+                // 校验表单元素是否为空
+                $scope.change = function(name, err){
+                    if (err.required){ // 为真，说明为空
+                        warnBoxShow(name);
+                    } else {
+                        warnBoxHide();
+                    }
+                };
+
+                // 绑定警告框关闭方法
+                $scope.close = function(){
+                    warnBoxHide();
+                };
+
+                // 点击登录
+                $scope.click_login = function(){
+                    if (!($scope.username && $scope.password)){
+                        return;
+                    }
+                    // 发起请求
+                    $http({
+                        method: 'POST',
+                        url: '/login/do',
+                        params: {
+                            username: $scope.username,
+                            password: $scope.password
+                        }
+                    })
+                    .success(function(data, header, config, status){
+                        //console.log(data);
+                        if (data.errCode == 1){ // 登录成功
+                            // 跳转到首页
+                            $window.location.href = '/index';
+                        } else {
+                            warnBoxShow('用户名或密码有误');
+                            // 清空用户名和密码
+                            $scope.username = '';
+                            $scope.password = '';
+                            // 获取焦点
+                            $('input[name="username"]').focus();
+                        }
+                    })
+                    .error(function(err){
+                        throw err;
+                    });
+                };
+
+                // 回车登录
+                $scope.enter_login = function(ev){
+                    if (ev && ev.keyCode == 13){ // 回车
+                        $scope.click_login();
+                    }
+                };
+            }]);
+        })(angular);
+    </script>
+</body>
+</html>

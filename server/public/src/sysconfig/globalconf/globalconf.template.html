@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">系统配置 <i class="crumbs-arrow">></i> 全局配置</h4>
+        <div class="alert alert-success" role="alert">关于系统的全局配置项，请慎重修改！</div>
+        <form class="form-horizontal container-fluid col-md-9" name="myForm">
+            <div class="row content-alert" ng-hide="regSite.regVal == 'pass'">
+                <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regSite.regList | filter : regSite.regVal">{{ item.tips }}</div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网页标题</label>
+                <div class="col-sm-10">
+                    <input type="text" name="regSite" class="form-control" ng-model="dataList.title" placeholder="网页标题" ng-blur="change('regSite', myForm.regSite.$error)" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网页关键字</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.keywords" placeholder="网页关键字">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网页描述</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" ng-model="dataList.description" placeholder="网页描述..."></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">版权所有</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.copy" placeholder="版权所有">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">公司地址</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.address" placeholder="公司地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.phone" placeholder="联系电话">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">电子邮箱</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.email" placeholder="电子邮箱">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">备案信息</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="dataList.records" placeholder="备案信息">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-click="modifyInfo()">提交信息</button>
+                </div>
+            </div>
+        </form>
+        <!-- 内容 END -->
+    </div>
+</div>

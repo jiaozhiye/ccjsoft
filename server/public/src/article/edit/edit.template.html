@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">文章管理 <i class="crumbs-arrow">></i> 编辑文章</h4>
+        <div class="alert alert-success" role="alert">数据删除无法恢复，请谨慎操作！</div>
+        <div class="col-md-12 col-sm-12 app-group-box">
+            <form class="form-inline">
+                <div class="form-group">
+                    <p class="form-control-static">所属分类</p>
+                </div>
+                <div class="form-group">
+                    <!-- 自定义分类指令 -->
+                    <app-classify ng-model="classid" classid="classid" rootclass="1"></app-classify>
+                    <!-- 自定义分类指令 END -->
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">&nbsp;&nbsp;搜索</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchVal" placeholder="请输入关键字...">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="filterFn(searchVal)">搜 索</button>
+            </form>
+        </div>
+        <table class="table table-bordered table-hover">
+            <tr class="active">
+                <th width="5%">
+                    选中
+                </th>
+                <th>
+                    文章标题
+                </th>
+                <th width="20%">
+                    所属分类
+                </th>
+                <th width="10%">
+                    作者
+                </th>
+                <th width="15%">
+                    最后修改时间
+                </th>
+                <th width="10%">
+                    排序
+                </th>
+                <th width="10%">
+                    操作
+                </th>
+            </tr>
+            <tr ng-repeat="item in infoList | filter : {cid: classid || ''} | filter : {title: searchVal}">
+                <td>
+                    <input type="checkbox" ng-model="item.isCk">
+                </td>
+                <td>
+                    {{ item.title }}
+                </td>
+                <td>
+                    {{ item.classify }}
+                </td>
+                <td>
+                    {{ item.author }}
+                </td>
+                <td>
+                    {{ item.last_time | dateFormate }}
+                </td>
+                <td>
+                    <input type="tel" class="form-control app-claasify-inp" ng-model="item.order_list" ng-blur="modOrder(item.id)" ng-keydown="onlynum($event)" ng-pattern="/^\d+$/">
+                </td>
+                <td>
+                    <a ng-href="#!/modarticle/{{item.id}}">修改</a>　<a href="javascript:;" ng-click="delArticle(item.id)">删除</a>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <!-- 自定义选择组建 -->
+                    <app-select app-data="infoList"></app-select>
+                    <!-- 自定义选择组建 END -->
+                </div>
+                <div class="pull-right">
+                    <!-- 自定义分页指令 -->
+                    <page-index my-init="pageInit(cb)" my-getdata="getList(cur)"></page-index>
+                    <!-- 自定义分页指令 END -->
+                </div>
+            </div>
+        </div>
+        <!-- 内容 END -->
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">数据库管理 <i class="crumbs-arrow">></i> 数据库还原</h4>
+        <div class="alert alert-success" role="alert">还原或者删除备份表文件！</div>
+        <table class="table table-bordered table-hover">
+            <tr class="active">
+                <th>
+                    选中
+                </th>
+                <th>
+                    备份表名称
+                </th>
+                <th>
+                    数据大小
+                </th>
+                <th>
+                    备份时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <tr ng-repeat="item in dataList | orderBy : fTime : 1">
+                <td><input type="checkbox" ng-model="item.isCk"></td>
+                <td>{{ item.fName }}</td>
+                <td>{{ item.fSize }}</td>
+                <td>{{ item.fTime | date : 'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td>
+                    <a href="javascript:;" ng-click="restoreFn(item.fName)">还原</a>　<a href="javascript:;" ng-click="delFn(item.fName)">删除</a>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    <!-- 自定义选择组建 -->
+                    <app-select app-data="dataList"></app-select>
+                    <!-- 自定义选择组建 END -->
+                </div>
+                <div class="pull-right btn-group">
+                    <button type="button" class="btn btn-default" ng-click="delFn()">删除备份</button>
+                </div>
+            </div>
+        </div>
+        <!-- 内容 END -->
+    </div>
+</div>

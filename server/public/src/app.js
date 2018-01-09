@@ -1,0 +1,70 @@
+/**
+ * @Author: jzy
+ * @Date: 2016/12/11
+ * @Last Modified by: jzy
+ * @Last Modified time: 2016/12/11
+ */
+'use strict';
+
+require("common/css/reset.css");
+require("./../bower_components/bootstrap/dist/css/bootstrap.min.css");
+require("./../bower_components/wangEditor/dist/css/wangEditor.min.css");
+require("src/app.css");
+require("common/js/common.js");
+require("src/app.module.js");
+require("src/app.config.js");
+require("src/core/cookie-factory.js");
+require("src/core/form-verify.js");
+require("src/core/date-format.js");
+require("src/core/article-pic-size.js");
+require("src/core/removed-record.js");
+require("components/header/header-directive.js");
+require("components/sidebar/sidebar-directive.js");
+require("components/usergroup/usergroup-directive.js");
+require("components/page-index/page-index-directive.js");
+require("components/select/select-directive.js");
+require("components/classify/classify-directive.js");
+require("components/upload/upload-directive.js");
+require("components/navclass/navclass-directive.js");
+require("components/modal-dialog/modal-dialog.js");
+require("components/modal-dialog/modal-img-dialog.js");
+require("components/page-index/page-index.js");
+require("components/sidebar/sidebar.js");
+require("src/sysconfig/sysinfo/sysinfo.module.js");
+require("src/sysconfig/sysinfo/sysinfo.component.js");
+require("src/sysconfig/globalconf/globalconf.module.js");
+require("src/sysconfig/globalconf/globalconf.component.js");
+require("src/database/dbcopy/dbcopy.module.js");
+require("src/database/dbcopy/dbcopy.component.js");
+require("src/database/dbrestore/dbrestore.module.js");
+require("src/database/dbrestore/dbrestore.component.js");
+require("src/user/add/add.module.js");
+require("src/user/add/add.component.js");
+require("src/user/edit/edit.module.js");
+require("src/user/edit/edit.component.js");
+require("src/user/mod/mod.module.js");
+require("src/user/mod/mod.component.js");
+require("src/group/add/add.module.js");
+require("src/group/add/add.component.js");
+require("src/group/edit/edit.module.js");
+require("src/group/edit/edit.component.js");
+require("src/group/mod/mod.module.js");
+require("src/group/mod/mod.component.js");
+require("src/classify/add/add.module.js");
+require("src/classify/add/add.component.js");
+require("src/classify/edit/edit.module.js");
+require("src/classify/edit/edit.component.js");
+require("src/classify/mod/mod.module.js");
+require("src/classify/mod/mod.component.js");
+require("src/article/add/add.module.js");
+require("src/article/add/add.component.js");
+require("src/article/edit/edit.module.js");
+require("src/article/edit/edit.component.js");
+require("src/article/mod/mod.module.js");
+require("src/article/mod/mod.component.js");
+require("src/appnav/add/add.module.js");
+require("src/appnav/add/add.component.js");
+require("src/appnav/edit/edit.module.js");
+require("src/appnav/edit/edit.component.js");
+require("src/appnav/mod/mod.module.js");
+require("src/appnav/mod/mod.component.js");

@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- 内容 -->
+        <h4 class="page-header">用户管理 <i class="crumbs-arrow">></i> 添加用户</h4>
+        <div class="alert alert-success" role="alert">为系统添加管理用户，必须要填写属于哪个用户组！</div>
+        <form class="form-horizontal container-fluid col-md-9" name="myForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户组</label>
+                    <div class="col-sm-10">
+                        <!-- 自定义用户组指令 -->
+                        <app-usergroup ng-model="groupid"></app-usergroup>
+                        <!-- 自定义用户组指令 END -->
+                    </div>
+                </div>
+                <div class="row content-alert" ng-hide="regName.regVal == 'pass'">
+                    <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regName.regList | filter : regName.regVal">{{ item.tips }}</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="regName" ng-model="uname" placeholder="用户名" ng-blur="change('regName', myForm.regName.$error)" required ng-minlength="6" ng-pattern="/^\w+$/">
+                    </div>
+                </div>
+                <div class="row content-alert" ng-hide="regPwd.regVal == 'pass'">
+                    <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regPwd.regList | filter : regPwd.regVal">{{ item.tips }}</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="regPwd" ng-model="pwd1" placeholder="密码" ng-blur="change('regPwd', myForm.regPwd.$error)" required ng-minlength="6" ng-pattern="/^\w+$/">
+                    </div>
+                </div>
+                <div class="row content-alert" ng-hide="regConfirm.regVal == 'pass'">
+                    <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regConfirm.regList | filter : regConfirm.regVal">{{ item.tips }}</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="regConfirm" ng-model="pwd2" placeholder="确认密码" ng-blur="change('regConfirm', myForm.regConfirm.$error)" ng-pattern="{{pwd1}}">
+                    </div>
+                </div>
+                <div class="row content-alert" ng-hide="regEmail.regVal == 'pass'">
+                    <div class="col-sm-10 col-sm-offset-2 alert alert-danger" ng-repeat="item in regEmail.regList | filter : regEmail.regVal">{{ item.tips }}</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">电子邮件</label>
+                    <div class="col-sm-10">
+                        <input type="type" class="form-control" name="regEmail" ng-model="email" placeholder="电子邮件" ng-blur="change('regEmail', myForm.regEmail.$error)" required ng-pattern="/^[a-z0-9_\.-]+@[\da-z\.-]+\.[a-z\.]{2,6}$/">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default" ng-click="addInfo()">添加用户</button>
+                    </div>
+                </div>
+            </form>
+            <!-- 内容 END -->
+    </div>
+</div>

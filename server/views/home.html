@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>App后台管理系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/src/common/css/reset.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/wangEditor/dist/css/wangEditor.min.css">
+  <link rel="stylesheet" href="/src/app.css">
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-route/angular-route.min.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/hammerjs/hammer.min.js"></script>
+  <script src="/bower_components/hammer-time/dist/hammer-time.min.js"></script>
+  <script src="/bower_components/plupload/js/plupload.full.min.js"></script>
+  <script src="/bower_components/wangEditor/dist/js/wangEditor.min.js"></script>
+</head>
+<body>
+  <!-- 头部 -->
+  <app-header></app-header>
+  <!-- 头部 END -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- 侧栏 -->
+      <app-sidebar></app-sidebar>
+      <!-- 侧栏 END -->
+      <!-- 主体 -->
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
+      <!-- 主体 END -->
+    </div>
+  </div>
+
+  <!--<script src="/dist/app.build.min.js"></script>-->
+
+  <script src="/src/common/js/common.js"></script>
+  <script src="/src/app.module.js"></script>
+  <script src="/src/app.config.js"></script>
+  <script src="/src/core/cookie-factory.js"></script>
+  <script src="/src/core/form-verify.js"></script>
+  <script src="/src/core/date-format.js"></script>
+  <script src="/src/core/article-pic-size.js"></script>
+  <script src="/src/core/removed-record.js"></script>
+  <script src="/src/components/header/header-directive.js"></script>
+  <script src="/src/components/sidebar/sidebar-directive.js"></script>
+  <script src="/src/components/usergroup/usergroup-directive.js"></script>
+  <script src="/src/components/page-index/page-index-directive.js"></script>
+  <script src="/src/components/select/select-directive.js"></script>
+  <script src="/src/components/classify/classify-directive.js"></script>
+  <script src="/src/components/upload/upload-directive.js"></script>
+  <script src="/src/components/navclass/navclass-directive.js"></script>
+  <script src="/src/components/modal-dialog/modal-dialog.js"></script>
+  <script src="/src/components/modal-dialog/modal-img-dialog.js"></script>
+  <script src="/src/components/page-index/page-index.js"></script>
+  <script src="/src/components/sidebar/sidebar.js"></script>
+  <script src="/src/sysconfig/sysinfo/sysinfo.module.js"></script>
+  <script src="/src/sysconfig/sysinfo/sysinfo.component.js"></script>
+  <script src="/src/sysconfig/globalconf/globalconf.module.js"></script>
+  <script src="/src/sysconfig/globalconf/globalconf.component.js"></script>
+  <script src="/src/database/dbcopy/dbcopy.module.js"></script>
+  <script src="/src/database/dbcopy/dbcopy.component.js"></script>
+  <script src="/src/database/dbrestore/dbrestore.module.js"></script>
+  <script src="/src/database/dbrestore/dbrestore.component.js"></script>
+  <script src="/src/user/add/add.module.js"></script>
+  <script src="/src/user/add/add.component.js"></script>
+  <script src="/src/user/edit/edit.module.js"></script>
+  <script src="/src/user/edit/edit.component.js"></script>
+  <script src="/src/user/mod/mod.module.js"></script>
+  <script src="/src/user/mod/mod.component.js"></script>
+  <script src="/src/group/add/add.module.js"></script>
+  <script src="/src/group/add/add.component.js"></script>
+  <script src="/src/group/edit/edit.module.js"></script>
+  <script src="/src/group/edit/edit.component.js"></script>
+  <script src="/src/group/mod/mod.module.js"></script>
+  <script src="/src/group/mod/mod.component.js"></script>
+  <script src="/src/classify/add/add.module.js"></script>
+  <script src="/src/classify/add/add.component.js"></script>
+  <script src="/src/classify/edit/edit.module.js"></script>
+  <script src="/src/classify/edit/edit.component.js"></script>
+  <script src="/src/classify/mod/mod.module.js"></script>
+  <script src="/src/classify/mod/mod.component.js"></script>
+  <script src="/src/article/add/add.module.js"></script>
+  <script src="/src/article/add/add.component.js"></script>
+  <script src="/src/article/edit/edit.module.js"></script>
+  <script src="/src/article/edit/edit.component.js"></script>
+  <script src="/src/article/mod/mod.module.js"></script>
+  <script src="/src/article/mod/mod.component.js"></script>
+  <script src="/src/appnav/add/add.module.js"></script>
+  <script src="/src/appnav/add/add.component.js"></script>
+  <script src="/src/appnav/edit/edit.module.js"></script>
+  <script src="/src/appnav/edit/edit.component.js"></script>
+  <script src="/src/appnav/mod/mod.module.js"></script>
+  <script src="/src/appnav/mod/mod.component.js"></script>
+
+</body>
+</html>
